@@ -24,9 +24,19 @@ type ArrayQueue struct{
 	cnt   int
 }
 
+type ListQueue struct{
+	//TODO
+}
+
+type CircularQueue struct{
+	//TODO
+}
+
 type Queue struct{
 	qType QueueType
 	arrQueue *ArrayQueue
+	ListQueue *ListQueue
+	CircularQueue *CircularQueue
 }
 
 func New(props QueueProps) *Queue{
@@ -37,7 +47,7 @@ func New(props QueueProps) *Queue{
 	}else{
 		elems := make([]printables.Interface, 10)
 		arrQueue := ArrayQueue{elems, 0, 0, 0}
-		return &Queue{Array, &arrQueue}
+		return &Queue{qType:Array, arrQueue: &arrQueue}
 	}
 	return nil
 }
@@ -57,6 +67,7 @@ func arrayEnqueue(queue *ArrayQueue, elem printables.Interface){
 func arrayDequeue(queue *ArrayQueue) (printables.Interface) {
 	capacity := cap(queue.elems)
 	if queue.cnt == 0{
+		//panic("Attempt to dequeue from an empty queue")
 		return nil
 	}
 

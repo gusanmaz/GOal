@@ -5,8 +5,11 @@ import (
 	"github.com/gusanmaz/algorithms/algorithms/search"
 	"github.com/gusanmaz/algorithms/algorithms/sort"
 	"github.com/gusanmaz/algorithms/generators"
-	"github.com/gusanmaz/algorithms/structures"
+	"github.com/gusanmaz/algorithms/structures/bag"
+	"github.com/gusanmaz/algorithms/structures/disjointSet"
+	"github.com/gusanmaz/algorithms/structures/llist"
 	"github.com/gusanmaz/algorithms/structures/queue"
+	"github.com/gusanmaz/algorithms/structures/stack"
 	"github.com/gusanmaz/algorithms/types/comparables"
 	"github.com/gusanmaz/algorithms/types/printables"
 )
@@ -29,7 +32,7 @@ func main() {
 	sort.Selection(algIntArr3)
 	fmt.Println(algIntArr3)
 
-	bag := structures.NewBag()
+	bag := bag.New()
 	bag.Add(printables.Int(122))
 	bag.Add(printables.Int(142))
 	bag.Add(printables.Int(152))
@@ -49,7 +52,7 @@ func main() {
 	mm := generators.SFloat64Arr(&generators.SFloat64ArrProps{})
 	fmt.Println(mm)
 
-	stack := structures.NewStack()
+	stack := stack.New()
 	stack.Push(printables.Int(6))
 	stack.Push(printables.Int(7))
 	stack.Push(printables.Int(8))
@@ -68,32 +71,34 @@ func main() {
 
 	fmt.Println("Deneme")
 
-	unilist := structures.NewUniList()
-	unilist.Insert2Tail(printables.Int(6))
-	unilist.DeleteHead()
-	unilist.Insert2Head(printables.Int(67))
-	unilist.Insert2Head(printables.Int(64))
-	unilist.Insert2Head(printables.Int(63))
-	unilist.Insert2Tail(printables.Int(7))
-	unilist.DeleteTail()
+	llist := llist.New(llist.LListProps{llist.Single})
+	llist.Insert2Tail(printables.Int(6))
+	llist.DeleteHead()
+	llist.Insert2Head(printables.Int(67))
+	llist.Insert2Head(printables.Int(64))
+	llist.Insert2Head(printables.Int(63))
+	llist.Insert2Tail(printables.Int(7))
+	llist.DeleteTail()
 
-	unilist2 := structures.NewUniList()
-	unilist2.Insert2Tail(printables.Int(10))
-	unilist2.Insert2Tail(printables.Int(15))
-	unilist2.Insert2Tail(printables.Int(20))
-	unilist2.Insert2Tail(printables.Int(30))
 
-	unit := unilist.Iterator()
+
+	/*llist2 := llist.New(llist.LListProps{llist.Single})
+	llist2.Insert2Tail(printables.Int(10))
+	llist2.Insert2Tail(printables.Int(15))
+	llist2.Insert2Tail(printables.Int(20))
+	llist2.Insert2Tail(printables.Int(30))
+
+	unit := llist.Iterator()
 
 	for unit.HasNext() {
 		fmt.Println(unit.Next())
 	}
 
-	unit2 := unilist2.Iterator()
+	unit2 := llist2.Iterator()
 	fmt.Println("hello")
 	for unit2.HasNext() {
 		fmt.Println(unit2.Next())
-	}
+	}*/
 
 	q := queue.New(queue.QueueProps{})
 	q.Enqueue(printables.Int(1))
@@ -111,6 +116,13 @@ func main() {
 	q.Enqueue(printables.Int(11))
 	q.Enqueue(printables.Int(12))
 	q.Enqueue(printables.Int(13))
+
+	dset := disjointSet.New(disjointSet.Props{disjointSet.FastFind, 20})
+	dset.Union(5,6)
+	dset.Union(7,8)
+	dset.Union(1,6)
+	fmt.Println(dset.Find(1), dset.Find(5))
+
 
 
 

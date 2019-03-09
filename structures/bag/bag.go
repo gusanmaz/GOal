@@ -1,4 +1,4 @@
-package structures
+package bag
 
 import (
 	"github.com/gusanmaz/algorithms/types/printables"
@@ -26,7 +26,7 @@ func (b *BagIterator) HasNext() bool{
 	return b.len > b.curInd
 }
 
-func NewBag() *Bag{
+func New() *Bag{
 	var b Bag = Bag{}
 	b.items = make([]printables.Interface, 10)
 	b.items = b.items[:0]
