@@ -43,15 +43,15 @@ func (u *UniList)Insert2Tail(val printables.Interface){
 		return
 	}
 
-	var almostTail *uniNode // nil by default
+	//var almostTail *uniNode // nil by default
 	for ;tailNode.next != nil; tailNode = tailNode.next{
-		almostTail = tailNode
+		//almostTail = tailNode
 	}
 
-	if almostTail == nil{
-		u.head.next = &newNode
-		return
-	}
+	//if almostTail == nil{
+	//	u.head.next = &newNode
+	//	return
+	//}
 
 	tailNode.next = &newNode
 }
@@ -71,12 +71,12 @@ func (u *UniList) DeleteTail() printables.Interface{
 	tailNode := u.head
 	var almostTail *uniNode // nil by default
 
-	for ;tailNode.next != nil; tailNode = tailNode.next{
-		almostTail = tailNode
-	}
-
 	if tailNode == nil{
 		return nil
+	}
+
+	for ;tailNode.next != nil; tailNode = tailNode.next{
+		almostTail = tailNode
 	}
 
 	if almostTail == nil{
